@@ -1,0 +1,78 @@
+<h1 mat-dialog-title>
+  Update Content : <span>{{ contentData.id }}</span>
+</h1>
+<div mat-dialog-content>
+  <form [formGroup]="contentForm" (ngSubmit)="updateContent(contentForm.value)">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Id :</mat-label>
+      <input
+        matInput
+        disabled
+        placeholder="{{ contentData.id }}"
+        value="{{ contentData.id }}"
+        name
+      />
+    </mat-form-field>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          placeholder="Title"
+          formControlName="title"
+          #titleInput
+        />
+        <mat-error>Title is required</mat-error>
+      </mat-form-field>
+    </p>
+    <mat-form-field appearance="standard">
+      <mat-label>Description</mat-label>
+      <input
+        matInput
+        placeholder="Description"
+        formControlName="description"
+        #descriptionInput
+      />
+      <mat-error>Description is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Prize</mat-label>
+      <input matInput placeholder="Prize" formControlName="prize" #prizeInput />
+      <mat-error>Prize is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Image URL</mat-label>
+      <input
+        matInput
+        placeholder="Image URL"
+        formControlName="imgURL"
+        #imgURLInput
+      />
+      <mat-error>Image URL is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" hintLabel="Type required">
+      <mat-label>Type</mat-label>
+      <mat-select matNativeControl name="type" formControlName="type">
+        <mat-option value="small">Small</mat-option>
+        <mat-option value="medium">Medium</mat-option>
+        <mat-option value="large">Large</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Tags</mat-label>
+      <input matInput placeholder="Tags" formControlName="tags" #tagsInput />
+      <mat-error>Tags is required</mat-error>
+    </mat-form-field>
+    <div mat-dialog-actions align="center">
+      <button mat-button type="button" (click)="onCloseClick()">Close</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!contentForm.valid"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>
